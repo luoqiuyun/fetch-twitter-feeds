@@ -1,0 +1,16 @@
+{
+  "name": "fetch-twitter-feed",
+  "version": "0.1",
+  "keywords": ["tweets"],
+  "description": "Fetch Twitter Feeds without using OAUTH or API 1.1. All in JavaScript.",
+  "author": "luoqiuyun",
+  "main": "js/twitter.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luoqiuyun/fetch-twitter-feed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luoqiuyun/fetch-twitter-feed/issues"
+  },
+  "homepage": "https://github.com/luoqiuyun/fetch-twitter-feed"
+}

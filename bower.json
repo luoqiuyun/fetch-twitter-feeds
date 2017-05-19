@@ -1,0 +1,18 @@
+{
+  "name": "fetch-twitter-feeds",
+  "description": "Fetch Twitter Feeds without using OAUTH or API 1.1. All in JavaScript.",
+  "version": "0.1",
+  "author": {
+    "name": "Bessie Luo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luoqiuyun/fetch-twitter-feeds.git"
+  },
+  "main": [
+    "js/twitter.js"
+  ],
+  "keywords": [
+    "luoqiuyun"
+  ]
+}
