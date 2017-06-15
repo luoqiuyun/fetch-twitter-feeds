@@ -1,3 +1,30 @@
+var configList = {
+  "list": {"listSlug": 'worked', "screenName": 'bess_luo'},
+  "domId": 'ListQiuYun',
+  "numId": 'ListQiuYunNum',//qiu
+  "maxTweets": 5,
+  "enableLinks": true, 
+  "showUser": true,
+  "showTime": true,
+  "showImages": true,
+  "lang": 'en'
+};
+twitterFetcher.fetch(configList);
+
+
+var configProfile = {
+  "profile": {"screenName": 'bess_luo'},
+  "domId": 'ProfileQiuYun',
+  "numId": 'ProfileQiuYunNum',//qiu
+  "maxTweets": 3,
+  "enableLinks": true, 
+  "showUser": true,
+  "showTime": true,
+  "showImages": true,
+  "lang": 'en'
+};
+twitterFetcher.fetch(configProfile);
+
 var profile = {
   "profile": {"screenName": 'laughingsquid'},
   "domId": 'ProfileLaughingsquid',
