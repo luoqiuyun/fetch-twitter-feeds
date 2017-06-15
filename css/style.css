@@ -3,13 +3,13 @@ body {
 }
 
 h1 {
-  margin: 30px 0;
+  margin: 30px 40px;
 }
 
 h2 {
   clear: both;
   color: #DAA520;
-  margin: 50px 44px 20px;
+  margin: 50px 44px 20px 0;
 }
 
 p, a {
