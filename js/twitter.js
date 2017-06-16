@@ -1,1 +1,425 @@
-!function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?module.exports=t():t()}(0,function(){function e(e){return'<div class="rownum">( '+e+" )</div>"}function t(){return"<h2>"+r+"</h2>"}function i(i){if(null===v){for(var n=i.length,s=0,a=document.getElementById(o),l="<ul>"+t(),r=1;s<n;)l+="<li>"+i[s]+e(r)+"</li>",s++,r++;l+="</ul>",a.innerHTML=l}else v(i)}function n(e){return e.replace(/<b[^>]*>(.*?)<\/b>/gi,function(e,t){return t}).replace(/class="(?!(tco-hidden|tco-display|tco-ellipsis))+.*?"|data-query-source=".*?"|dir=".*?"|rel=".*?"/gi,"")}function s(e){for(var t=e.getElementsByTagName("a"),i=t.length-1;i>=0;i--)t[i].setAttribute("target","_blank")}function a(e,t){for(var i=[],n=new RegExp("(^| )"+t+"( |$)"),s=e.getElementsByTagName("*"),a=0,l=s.length;a<l;a++)n.test(s[a].className)&&i.push(s[a]);return i}function l(e){if(void 0!==e&&e.innerHTML.indexOf("data-srcset")>=0){var t=e.innerHTML.match(/data-srcset="([A-z0-9%_\.-]+)/i)[0];return decodeURIComponent(t).split('"')[1]}}var r="",o="",c=20,d=!0,m=[],p=!1,u=!0,h=!0,g=null,w=!0,f=!0,v=null,b=!0,y=!1,_=!0,T=!0,k=!1,C=null,N={fetch:function(e){if(void 0===e.maxTweets&&(e.maxTweets=20),void 0===e.enableLinks&&(e.enableLinks=!0),void 0===e.showUser&&(e.showUser=!0),void 0===e.showTime&&(e.showTime=!0),void 0===e.dateFunction&&(e.dateFunction="default"),void 0===e.showRetweet&&(e.showRetweet=!0),void 0===e.customCallback&&(e.customCallback=null),void 0===e.showInteraction&&(e.showInteraction=!0),void 0===e.showImages&&(e.showImages=!1),void 0===e.linksInNewWindow&&(e.linksInNewWindow=!0),void 0===e.showPermalinks&&(e.showPermalinks=!0),void 0===e.dataOnly&&(e.dataOnly=!1),p)m.push(e);else{p=!0,r=e.displayTitle,o=e.domId,c=e.maxTweets,d=e.enableLinks,h=e.showUser,u=e.showTime,f=e.showRetweet,g=e.dateFunction,v=e.customCallback,b=e.showInteraction,y=e.showImages,_=e.linksInNewWindow,T=e.showPermalinks,k=e.dataOnly;var t=document.getElementsByTagName("head")[0];null!==C&&t.removeChild(C),(C=document.createElement("script")).type="text/javascript",void 0!==e.list?C.src="https://syndication.twitter.com/timeline/list?callback=__twttrf.callback&dnt=false&list_slug="+e.list.listSlug+"&screen_name="+e.list.screenName+"&suppress_response_codes=true&lang="+(e.lang||"en")+"&rnd="+Math.random():void 0!==e.profile?C.src="https://syndication.twitter.com/timeline/profile?callback=__twttrf.callback&dnt=false&screen_name="+e.profile.screenName+"&suppress_response_codes=true&lang="+(e.lang||"en")+"&rnd="+Math.random():void 0!==e.likes?C.src="https://syndication.twitter.com/timeline/likes?callback=__twttrf.callback&dnt=false&screen_name="+e.likes.screenName+"&suppress_response_codes=true&lang="+(e.lang||"en")+"&rnd="+Math.random():C.src="https://cdn.syndication.twimg.com/widgets/timelines/"+e.id+"?&lang="+(e.lang||"en")+"&callback=__twttrf.callback&suppress_response_codes=true&rnd="+Math.random(),t.appendChild(C)}},callback:function(e){function t(e){var t=e.getElementsByTagName("img")[0];return t.src=t.getAttribute("data-src-2x"),e}if(void 0===e||void 0===e.body)return p=!1,void(m.length>0&&(N.fetch(m[0]),m.splice(0,1)));e.body=e.body.replace(/(<img[^c]*class="Emoji[^>]*>)|(<img[^c]*class="u-block[^>]*>)/g,""),y||(e.body=e.body.replace(/(<img[^c]*class="NaturalImage-image[^>]*>|(<img[^c]*class="CroppedImage-image[^>]*>))/g,"")),h||(e.body=e.body.replace(/(<img[^c]*class="Avatar"[^>]*>)/g,""));var r=document.createElement("div");r.innerHTML=e.body,void 0===r.getElementsByClassName&&(w=!1);var o=[],v=[],C=[],x=[],E=[],I=[],A=[],B=0;if(w)for(L=r.getElementsByClassName("timeline-Tweet");B<L.length;)L[B].getElementsByClassName("timeline-Tweet-retweetCredit").length>0?E.push(!0):E.push(!1),(!E[B]||E[B]&&f)&&(o.push(L[B].getElementsByClassName("timeline-Tweet-text")[0]),I.push(L[B].getAttribute("data-tweet-id")),h&&v.push(t(L[B].getElementsByClassName("timeline-Tweet-author")[0])),C.push(L[B].getElementsByClassName("dt-updated")[0]),A.push(L[B].getElementsByClassName("timeline-Tweet-timestamp")[0]),void 0!==L[B].getElementsByClassName("timeline-Tweet-media")[0]?x.push(L[B].getElementsByClassName("timeline-Tweet-media")[0]):x.push(void 0)),B++;else for(var L=a(r,"timeline-Tweet");B<L.length;)a(L[B],"timeline-Tweet-retweetCredit").length>0?E.push(!0):E.push(!1),(!E[B]||E[B]&&f)&&(o.push(a(L[B],"timeline-Tweet-text")[0]),I.push(L[B].getAttribute("data-tweet-id")),h&&v.push(t(a(L[B],"timeline-Tweet-author")[0])),C.push(a(L[B],"dt-updated")[0]),A.push(a(L[B],"timeline-Tweet-timestamp")[0]),void 0!==a(L[B],"timeline-Tweet-media")[0]?x.push(a(L[B],"timeline-Tweet-media")[0]):x.push(void 0)),B++;o.length>c&&(o.splice(c,o.length-c),v.splice(c,v.length-c),C.splice(c,C.length-c),E.splice(c,E.length-c),x.splice(c,x.length-c),A.splice(c,A.length-c));var M=[],B=o.length,H=0;if(k)for(;H<B;)M.push({tweet:o[H].innerHTML,author:v[H]?v[H].innerHTML:"Unknown Author",time:C[H].textContent,timestamp:C[H].getAttribute("datetime").replace("+0000","Z").replace(/([\+\-])(\d\d)(\d\d)/,"$1$2:$3"),image:l(x[H]),rt:E[H],tid:I[H],permalinkURL:void 0===A[H]?"":A[H].href}),H++;else for(;H<B;){if("string"!=typeof g){var R=C[H].getAttribute("datetime"),P=new Date(C[H].getAttribute("datetime").replace(/-/g,"/").replace("T"," ").split("+")[0]),U=g(P,R);if(C[H].setAttribute("aria-label",U),o[H].textContent)if(w)C[H].textContent=U;else{var F=document.createElement("p"),O=document.createTextNode(U);F.appendChild(O),F.setAttribute("aria-label",U),C[H]=F}else C[H].textContent=U}var $="";d?(_&&(s(o[H]),h&&s(v[H])),h&&($+='<div class="user">'+n(v[H].innerHTML)+"</div>"),$+='<p class="tweet">'+n(o[H].innerHTML)+"</p>",u&&($+=T?'<p class="timePosted"><a href="'+A[H]+'">'+C[H].getAttribute("aria-label")+"</a></p>":'<p class="timePosted">'+C[H].getAttribute("aria-label")+"</p>")):(o[H].textContent,h&&($+='<p class="user">'+v[H].textContent+"</p>"),$+='<p class="tweet">'+o[H].textContent+"</p>",u&&($+='<p class="timePosted">'+C[H].textContent+"</p>")),b&&($+='<p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to='+I[H]+'" class="twitter_reply_icon"'+(_?' target="_blank">':">")+'Reply</a><a href="https://twitter.com/intent/retweet?tweet_id='+I[H]+'" class="twitter_retweet_icon"'+(_?' target="_blank">':">")+'Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id='+I[H]+'" class="twitter_fav_icon"'+(_?' target="_blank">':">")+"Favorite</a></p>"),y&&void 0!==x[H]&&void 0!==l(x[H])&&($+='<div class="media"><img src="'+l(x[H])+'" alt="Image from tweet" /></div>'),y?M.push($):!y&&o[H].textContent.length&&M.push($),H++}i(M),p=!1,m.length>0&&(N.fetch(m[0]),m.splice(0,1))}};return window.__twttrf=N,window.twitterFetcher=N,N});
+/*********************************************************************
+*  #### Fetch twitter feeds v1.0.0 ####
+*  Coded by Qiu Yun Luo 2017. 
+*  http://www.iiicare.org/deploy/twitter-feeds/
+*  Github: https://github.com/luoqiuyun/fetch-twitter-feed
+*  Updates will be posted to this site.
+*********************************************************************/
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD (Asynchronous Module Definition). Register as an anonymous module.
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, 
+    // but only CommonJS-like environments, like Node, support module.exports
+    module.exports = factory();
+  } else {
+    // Browser globals.
+    factory();
+  }
+}(this, function() {
+  var displayTitle  = '';
+  var domNode = '';
+  var maxTweets = 20;
+  var parseLinks = true;
+  var queue = [];
+  var inProgress = false;
+  var printTime = true;
+  var printUser = true;
+  var formatterFunction = null;
+  var supportsClassName = true;
+  var showRts = true;
+  var customCallbackFunction = null;
+  var showInteractionLinks = true;
+  var showImages = false;
+  var targetBlank = true;
+  var lang = 'en';
+  var permalinks = true;
+  var dataOnly = false;
+  var script = null;
+  var scriptAdded = false;
+  var timeRange = '';
+
+  function getRowNumber(row) {
+    return '<div class="rownum">( ' + row + ' )</div>';
+  }
+
+  function getTitle(x) {
+    return '<h2>' + displayTitle + ' (' + x + ')  ' + timeRange + '</h2>';
+  }
+
+  function handleTweets(tweets){
+    if (customCallbackFunction === null) {
+      var x = tweets.length;
+      var n = 0;
+      var element = document.getElementById(domNode);
+      var html = '<ul>' + getTitle(x);
+      var rowNum = 1;
+      while(n < x) {
+        html += '<li>' + tweets[n] + getRowNumber(rowNum) + '</li>';
+        n++;
+        rowNum++;
+      }
+      html += '</ul>';
+      element.innerHTML = html;
+    } else {
+      customCallbackFunction(tweets);
+    }
+  }
+
+  function strip(data) {
+    return data.replace(/<b[^>]*>(.*?)<\/b>/gi, function(a,s){return s;})
+        .replace(/class="(?!(tco-hidden|tco-display|tco-ellipsis))+.*?"|data-query-source=".*?"|dir=".*?"|rel=".*?"/gi,
+        '');
+  }
+
+  function targetLinksToNewWindow(el) {
+    var links = el.getElementsByTagName('a');
+    for (var i = links.length - 1; i >= 0; i--) {
+      links[i].setAttribute('target', '_blank');
+    }
+  }
+
+  function getElementsByClassName (node, classname) {
+    var a = [];
+    var regex = new RegExp('(^| )' + classname + '( |$)');
+    var elems = node.getElementsByTagName('*');
+    for (var i = 0, j = elems.length; i < j; i++) {
+        if(regex.test(elems[i].className)){
+          a.push(elems[i]);
+        }
+    }
+    return a;
+  }
+
+  function extractImageUrl(image_data) {
+    if (image_data !== undefined && image_data.innerHTML.indexOf('data-srcset') >= 0) {
+      var data_src = image_data.innerHTML
+          .match(/data-srcset="([A-z0-9%_\.-]+)/i)[0];
+      return decodeURIComponent(data_src).split('"')[1];
+    }
+  }
+
+  var twitterFetcher = {
+    fetch: function(config) {
+      if (config.maxTweets === undefined) {
+        config.maxTweets = 20;
+      }
+      if (config.enableLinks === undefined) {
+        config.enableLinks = true;
+      }
+      if (config.showUser === undefined) {
+        config.showUser = true;
+      }
+      if (config.showTime === undefined) {
+        config.showTime = true;
+      }
+      if (config.dateFunction === undefined) {
+        config.dateFunction = 'default';
+      }
+      if (config.showRetweet === undefined) {
+        config.showRetweet = true;
+      }
+      if (config.customCallback === undefined) {
+        config.customCallback = null;
+      }
+      if (config.showInteraction === undefined) {
+        config.showInteraction = true;
+      }
+      if (config.showImages === undefined) {
+        config.showImages = false;
+      }
+      if (config.linksInNewWindow === undefined) {
+        config.linksInNewWindow = true;
+      }
+      if (config.showPermalinks === undefined) {
+        config.showPermalinks = true;
+      }
+      if (config.dataOnly === undefined) {
+        config.dataOnly = false;
+      }
+
+      if (inProgress) {
+        queue.push(config);
+      } else {
+        inProgress = true;
+
+        displayTitle = config.displayTitle;
+        domNode = config.domId;
+        maxTweets = config.maxTweets;
+        parseLinks = config.enableLinks;
+        printUser = config.showUser;
+        printTime = config.showTime;
+        showRts = config.showRetweet;
+        formatterFunction = config.dateFunction;
+        customCallbackFunction = config.customCallback;
+        showInteractionLinks = config.showInteraction;
+        showImages = config.showImages;
+        targetBlank = config.linksInNewWindow;
+        permalinks = config.showPermalinks;
+        dataOnly = config.dataOnly;
+
+        var head = document.getElementsByTagName('head')[0];
+        if (script !== null) {
+          head.removeChild(script);
+        }
+        script = document.createElement('script');
+        script.type = 'text/javascript';
+        if (config.list !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/list?' +
+              'callback=__twttrf.callback&dnt=false&list_slug=' +
+              config.list.listSlug + '&screen_name=' + config.list.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else if (config.profile !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/profile?' +
+              'callback=__twttrf.callback&dnt=false' +
+              '&screen_name=' + config.profile.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else if (config.likes !== undefined) {
+          script.src = 'https://syndication.twitter.com/timeline/likes?' +
+              'callback=__twttrf.callback&dnt=false' +
+              '&screen_name=' + config.likes.screenName +
+              '&suppress_response_codes=true&lang=' + (config.lang || lang) +
+              '&rnd=' + Math.random();
+        } else {
+          script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/' +
+              config.id + '?&lang=' + (config.lang || lang) +
+              '&callback=__twttrf.callback&' +
+              'suppress_response_codes=true&rnd=' + Math.random();
+        }
+        head.appendChild(script);
+      }
+    },
+    callback: function(data) {
+      if (data === undefined || data.body === undefined) {
+        inProgress = false;
+
+        if (queue.length > 0) {
+          twitterFetcher.fetch(queue[0]);
+          queue.splice(0,1);
+        }
+        return;
+      }
+
+      // Remove emoji and summary card images.
+      data.body = data.body.replace(/(<img[^c]*class="Emoji[^>]*>)|(<img[^c]*class="u-block[^>]*>)/g, '');
+      // Remove display images.
+      if (!showImages) {
+        data.body = data.body.replace(/(<img[^c]*class="NaturalImage-image[^>]*>|(<img[^c]*class="CroppedImage-image[^>]*>))/g, '');
+      }
+      // Remove avatar images.
+      if (!printUser) {
+        data.body = data.body.replace(/(<img[^c]*class="Avatar"[^>]*>)/g, '');
+      }
+
+      var div = document.createElement('div');
+      div.innerHTML = data.body;
+      if (typeof(div.getElementsByClassName) === 'undefined') {
+         supportsClassName = false;
+      }
+
+      function swapDataSrc(element) {
+        var avatarImg = element.getElementsByTagName('img')[0];
+        avatarImg.src = avatarImg.getAttribute('data-src-2x');
+        return element;
+      }
+
+      var tweets = [];
+      var authors = [];
+      var times = [];
+      var images = [];
+      var rts = [];
+      var tids = [];
+      var permalinksURL = [];
+      var x = 0;
+
+      if (supportsClassName) {
+        var tmp = div.getElementsByClassName('timeline-Tweet');
+        while (x < tmp.length) {
+          if (tmp[x].getElementsByClassName('timeline-Tweet-retweetCredit').length > 0) {
+            rts.push(true);
+          } else {
+            rts.push(false);
+          }
+          if (!rts[x] || rts[x] && showRts) {
+            tweets.push(tmp[x].getElementsByClassName('timeline-Tweet-text')[0]);
+            tids.push(tmp[x].getAttribute('data-tweet-id'));
+            if (printUser) {
+              authors.push(swapDataSrc(tmp[x].getElementsByClassName('timeline-Tweet-author')[0]));
+            }
+            times.push(tmp[x].getElementsByClassName('dt-updated')[0]);
+            permalinksURL.push(tmp[x].getElementsByClassName('timeline-Tweet-timestamp')[0]);
+            if (tmp[x].getElementsByClassName('timeline-Tweet-media')[0] !==
+                undefined) {
+              images.push(tmp[x].getElementsByClassName('timeline-Tweet-media')[0]);
+            } else {
+              images.push(undefined);
+            }
+          }
+          x++;
+        }
+      } else {
+        var tmp = getElementsByClassName(div, 'timeline-Tweet');
+        while (x < tmp.length) {
+          if (getElementsByClassName(tmp[x], 'timeline-Tweet-retweetCredit').length > 0) {
+            rts.push(true);
+          } else {
+            rts.push(false);
+          }
+          if (!rts[x] || rts[x] && showRts) {
+            tweets.push(getElementsByClassName(tmp[x], 'timeline-Tweet-text')[0]);
+            tids.push(tmp[x].getAttribute('data-tweet-id'));
+            if (printUser) {
+              authors.push(swapDataSrc(getElementsByClassName(tmp[x],'timeline-Tweet-author')[0]));
+            }
+            times.push(getElementsByClassName(tmp[x], 'dt-updated')[0]);
+            permalinksURL.push(getElementsByClassName(tmp[x], 'timeline-Tweet-timestamp')[0]);
+            if (getElementsByClassName(tmp[x], 'timeline-Tweet-media')[0] !== undefined) {
+              images.push(getElementsByClassName(tmp[x], 'timeline-Tweet-media')[0]);
+            } else {
+              images.push(undefined);
+            }
+          }
+          x++;
+        }
+      }
+
+      if (tweets.length > maxTweets) {
+        tweets.splice(maxTweets, (tweets.length - maxTweets));
+        authors.splice(maxTweets, (authors.length - maxTweets));
+        times.splice(maxTweets, (times.length - maxTweets));
+        rts.splice(maxTweets, (rts.length - maxTweets));
+        images.splice(maxTweets, (images.length - maxTweets));
+        permalinksURL.splice(maxTweets, (permalinksURL.length - maxTweets));
+      }
+
+      var arrayTweets = [];
+      var x = tweets.length;
+      var n = 0;
+      timeRange = times[0].getAttribute('datetime').substr(0, 10) + ' ~ ';
+      timeRange += times[x-1].getAttribute('datetime').substr(0, 10);
+      if (dataOnly) {
+        while (n < x) {
+          arrayTweets.push({
+            tweet: tweets[n].innerHTML,
+            author: authors[n] ? authors[n].innerHTML : 'Unknown Author',
+            time: times[n].textContent,
+            timestamp: times[n].getAttribute('datetime').replace('+0000', 'Z').replace(/([\+\-])(\d\d)(\d\d)/, '$1$2:$3'),
+            image: extractImageUrl(images[n]),
+            rt: rts[n],
+            tid: tids[n],
+            permalinkURL: (permalinksURL[n] === undefined) ?
+                '' : permalinksURL[n].href
+          });
+          n++;
+        }
+      } else {
+        while (n < x) {
+          if (typeof(formatterFunction) !== 'string') {
+            var datetimeText = times[n].getAttribute('datetime');
+            var newDate = new Date(times[n].getAttribute('datetime')
+                .replace(/-/g,'/').replace('T', ' ').split('+')[0]);
+            var dateString = formatterFunction(newDate, datetimeText);
+            times[n].setAttribute('aria-label', dateString);
+
+            if (tweets[n].textContent) {
+              // IE hack.
+              if (supportsClassName) {
+                times[n].textContent = dateString;
+              } else {
+                var h = document.createElement('p');
+                var t = document.createTextNode(dateString);
+                h.appendChild(t);
+                h.setAttribute('aria-label', dateString);
+                times[n] = h;
+              }
+            } else {
+              times[n].textContent = dateString;
+            }
+          }
+          var op = '';
+          if (parseLinks) {
+            if (targetBlank) {
+              targetLinksToNewWindow(tweets[n]);
+              if (printUser) {
+                targetLinksToNewWindow(authors[n]);
+              }
+            }
+            if (printUser) {
+              op += '<div class="user">' + strip(authors[n].innerHTML) +
+                  '</div>';
+            }
+            op += '<p class="tweet">' + strip(tweets[n].innerHTML) + '</p>';
+            if (printTime) {
+              if (permalinks) {
+                op += '<p class="timePosted"><a href="' + permalinksURL[n] +
+                   '">' + times[n].getAttribute('aria-label') + '</a></p>';
+              } else {
+                op += '<p class="timePosted">' +
+                    times[n].getAttribute('aria-label') + '</p>';
+              }
+            }
+          } else {
+            if (tweets[n].textContent) {
+              if (printUser) {
+                op += '<p class="user">' + authors[n].textContent + '</p>';
+              }
+              op += '<p class="tweet">' +  tweets[n].textContent + '</p>';
+              if (printTime) {
+                op += '<p class="timePosted">' + times[n].textContent + '</p>';
+              }
+
+            } else {
+              if (printUser) {
+                op += '<p class="user">' + authors[n].textContent + '</p>';
+              }
+              op += '<p class="tweet">' +  tweets[n].textContent + '</p>';
+              if (printTime) {
+                op += '<p class="timePosted">' + times[n].textContent + '</p>';
+              }
+            }
+          }
+          if (showInteractionLinks) {
+            op += '<p class="interact"><a href="https://twitter.com/intent/' +
+                'tweet?in_reply_to=' + tids[n] +
+                '" class="twitter_reply_icon"' +
+                (targetBlank ? ' target="_blank">' : '>') +
+                'Reply</a><a href="https://twitter.com/intent/retweet?' +
+                'tweet_id=' + tids[n] + '" class="twitter_retweet_icon"' +
+                (targetBlank ? ' target="_blank">' : '>') + 'Retweet</a>' +
+                '<a href="https://twitter.com/intent/favorite?tweet_id=' +
+                tids[n] + '" class="twitter_fav_icon"' +
+                (targetBlank ? ' target="_blank">' : '>') + 'Favorite</a></p>';
+          }
+          if (showImages && images[n] !== undefined && extractImageUrl(images[n]) !== undefined) {
+            op += '<div class="media">' +
+                '<img src="' + extractImageUrl(images[n]) +
+                '" alt="Image from tweet" />' + '</div>';
+          }
+          if (showImages) {
+            arrayTweets.push(op);
+          } else if (!showImages && tweets[n].textContent.length) {
+            arrayTweets.push(op);
+          }
+
+          n++;
+        }
+      }
+
+      handleTweets(arrayTweets);
+      inProgress = false;
+
+      if (queue.length > 0) {
+        twitterFetcher.fetch(queue[0]);
+        queue.splice(0,1);
+      }
+    }
+  };
+
+  // It must be a global variable because it will be called by JSONP.
+  window.__twttrf = twitterFetcher;
+  window.twitterFetcher = twitterFetcher;
+  return twitterFetcher;
+}));
